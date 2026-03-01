@@ -2,6 +2,7 @@ import express, { type Request, type Response } from "express";
 import cors from "cors";
 import sequelize from "./src/config/database";
 import userRoutes from "./src/routes/userRoutes";
+import chatRoutes from "./src/routes/chatRoutes";
 
 const app = express();
 const port: number = 5000;
@@ -17,6 +18,9 @@ app.get("/", (req: Request, res: Response) => {
 
 // 🛣️ User routes — all start with /api/users
 app.use("/api/users", userRoutes);
+
+// 🤖 Chat routes — all start with /api/chat
+app.use("/api/chat", chatRoutes);
 
 // 🚀 Start server and connect to database
 const startServer = async () => {
