@@ -15,8 +15,12 @@
     "prod": "bun run index.ts"
   },
   "dependencies": {
+    "@google/generative-ai": "^0.24.1",
     "@types/cors": "^2.8.19",
     "cors": "^2.8.6",
-    "express": "^5.2.1"
+    "express": "^5.2.1",
+    "groq-sdk": "^0.37.0",
+    "mysql2": "^3.18.2",
+    "sequelize": "^6.37.7"
   }
 }

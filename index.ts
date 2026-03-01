@@ -1,24 +1,42 @@
 import express, { type Request, type Response } from "express";
 import cors from "cors";
+import sequelize from "./src/config/database";
+import userRoutes from "./src/routes/userRoutes";
+import chatRoutes from "./src/routes/chatRoutes";
 
 const app = express();
 const port: number = 5000;
 
-// Add types for request and response
-//middleware
-app.use(cors());
-app.use(express.json());
+// 🔧 Middleware
+app.use(cors());           // Allow frontend to connect
+app.use(express.json());   // Parse JSON request bodies
 
+// 🏠 Home route
 app.get("/", (req: Request, res: Response) => {
   res.send("Hello World!");
 });
 
-app.post("/age", (req: Request, res: Response) => {
-  const age: number = req.body.age;
-  console.log(`Received age: ${age}`);
-  res.send(`Your age is ${age}`);
-});
+// 🛣️ User routes — all start with /api/users
+app.use("/api/users", userRoutes);
 
-app.listen(port, () => {
-  console.log(`Listening on port ${port}...`);
-});
+// 🤖 Chat routes — all start with /api/chat
+app.use("/api/chat", chatRoutes);
+
+// 🚀 Start server and connect to database
+const startServer = async () => {
+  try {
+    await sequelize.authenticate();  // Test database connection
+    console.log("✅ Database connected successfully!");
+
+    await sequelize.sync();          // Create tables if they don't exist
+    console.log("✅ Tables synced!");
+
+    app.listen(port, () => {
+      console.log(`🚀 Server running on http://localhost:${port}`);
+    });
+  } catch (error) {
+    console.error("❌ Failed to connect to database:", error);
+  }
+};
+
+startServer();
