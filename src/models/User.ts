@@ -7,6 +7,8 @@ interface UserAttributes {
   name: string;
   email: string;
   age: number;
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
 // 🗄️ Create the User model (this becomes a "users" table in MySQL)
