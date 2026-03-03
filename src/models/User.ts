@@ -2,7 +2,6 @@
 import { DataTypes, Model } from "sequelize";
 import sequelize from "../../config/database.ts";
 
-// 📋 Define what a Student looks like in TypeScript
 interface StudentAttributes {
   id?: number;
   name: string;
@@ -11,14 +10,12 @@ interface StudentAttributes {
   updatedAt?: Date;
 }
 
-// 🗄️ Create the Student model
 class Student extends Model<StudentAttributes> implements StudentAttributes {
-  public id!: number;
-  public name!: string;
-  public age!: number;
+  declare id: number;
+  declare name: string;
+  declare age: number;
 }
 
-// 🏗️ Define the columns
 Student.init(
   {
     id: {
@@ -37,7 +34,7 @@ Student.init(
   },
   {
     sequelize,
-    tableName: "Students", // must match exactly what migration created
+    tableName: "Students",
     timestamps: true,
   }
 );

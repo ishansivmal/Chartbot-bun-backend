@@ -10,9 +10,9 @@ interface CourseAttributes {
 }
 
 class Course extends Model<CourseAttributes> implements CourseAttributes {
-  public id!: number;
-  public title!: string;
-  public description!: string;
+   id!: number;
+   title!: string;
+   description!: string;
 }
 
 Course.init(
