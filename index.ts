@@ -1,6 +1,6 @@
 import express, { type Request, type Response } from "express";
 import cors from "cors";
-import sequelize from "./src/config/database";
+import sequelize from "./config/database.ts";
 import userRoutes from "./src/routes/userRoutes";
 import chatRoutes from "./src/routes/chatRoutes";
 

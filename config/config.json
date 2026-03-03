@@ -1,0 +1,11 @@
+{
+  "development": {
+    "username": "root",
+    "password": "",
+    "database": "chartbot",
+    "host": "localhost",
+    "port": 3306,
+    "dialect": "mysql",
+    "logging": true
+  }
+}
