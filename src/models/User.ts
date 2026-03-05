@@ -10,13 +10,13 @@ interface StudentAttributes {
   updatedAt?: Date;
 }
 
-class Student extends Model<StudentAttributes> implements StudentAttributes {
+class User extends Model<StudentAttributes> implements StudentAttributes {
   declare id: number;
   declare name: string;
   declare age: number;
 }
 
-Student.init(
+User.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -34,9 +34,9 @@ Student.init(
   },
   {
     sequelize,
-    tableName: "Students",
+    tableName: "Users",
     timestamps: true,
   }
 );
 
-export default Student;
+export default User;
